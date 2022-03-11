@@ -1,13 +1,12 @@
-package game1;
+package game;
 
 import java.util.Scanner;
 
 public class game1 {
 
 	public static void main(String[] args) {
-		// TODO Auto-generated method stub
 		int  number;
-		final int guess = 12;
+		final int guess = 12/3+4;
 		Scanner input = new Scanner(System.in);
 		System.out.println("Guess an interger Value: ");
 		number = input.nextInt();
@@ -17,11 +16,15 @@ public class game1 {
 			
 		
 		}
+		else if(number == guess) {
+			System.out.println("Congratulations!! you won " + (guess));
+		}
 		else 
 			System.out.println("You failed!! Our guess was " + (guess/2+5));
 		
 		
-		System.out.println(number);
-	
-};
+		
 
+	}
+	System.out.println(guess)
+}
