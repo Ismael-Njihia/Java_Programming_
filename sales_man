@@ -1,0 +1,43 @@
+import java.util.Scanner;
+public class Salesman {
+    public static void main(String[] args) {
+        int[][] numberOfSales = new int[10][5];
+        int GrandSales = 0;
+        int ItemNumber = 5, NoOfSalesmen = 10;
+        String[] name = new String[10];
+        Scanner input = new  Scanner(System.in);
+
+            for (int i = 0; i < NoOfSalesmen; i++) {
+                System.out.printf("\nSalesman name: " + (i + 1) + ": ");
+                name[i] = input.next();
+                for (int j = 0; j < ItemNumber; j++) {
+                    System.out.print("Sales number " + (j + 1) + ": ");
+                    numberOfSales[i][j] = input.nextInt();
+                }
+            }
+            
+            int TotalSales = 0;
+            System.out.println("\nName\tItem1\tItem2\tItem3\tItem4\tItem5\tTotal Sales");
+            for (int i = 0; i < NoOfSalesmen; i++) {
+                System.out.print(name[i] + "\t");
+                for (int j = 0; j < ItemNumber; j++) {
+                    System.out.print(numberOfSales[i][j] + "\t");
+                    TotalSales += numberOfSales[i][j];
+                }
+                GrandSales += TotalSales;
+                System.out.print(TotalSales + "\t");
+                System.out.println("\n");
+                TotalSales = 0;
+            }
+            int GrandTotal = 0;
+            System.out.print("Grand Total \t");
+            for (int j = 0; j < ItemNumber; j++) {
+                for (int i = 0; i < NoOfSalesmen; i++) {
+                    GrandTotal += numberOfSales[i][j];
+                }
+                System.out.print(GrandTotal + "\t");
+                GrandTotal = 0;
+            }
+            System.out.println(GrandSales + "\t"); System.out.println("\n");
+        }
+    }
