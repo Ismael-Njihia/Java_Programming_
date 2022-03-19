@@ -1,0 +1,71 @@
+
+public class BankAccount {
+	
+	public String accountNumber;
+	public String name;
+	public double balance;
+	
+	public BankAccount(String accountNumber, String name, double balance) {
+		this.accountNumber = accountNumber;
+		this.name = name;
+		this.balance = balance;
+	}
+	public void withdraw(double amount) {
+		if(balance >= amount) {
+			balance -= amount;
+		}
+	}
+	public void deposit (double amount) {
+		balance +=amount;
+	}
+	public void calculateInterest() {
+		System.out.println("Interest is not applicable for this account");
+	}
+	public void display() {
+		System.out.println("Account number" + accountNumber);
+		System.out.println("Name" + name);
+		System.out.println("Balance" + balance);
+	}
+	
+
+}
+class SavingsAccount extends BankAccount{
+	private double interestRate;
+	
+	public SavingsAccount(String accountNumber, String name, double balance, double interestRate) {
+		super(accountNumber, name, balance);
+		this.interestRate = interestRate;
+	}
+	public void calculateInterest() {
+		balance += balance * interestRate;
+	}
+}
+class CurrentAccount extends BankAccount{
+	private double overdraft;
+	
+	public CurrentAccount(String accountNumber, String name,double balance, double overdraft) {
+		super(accountNumber, name, balance);
+		this.overdraft = overdraft;
+	}
+	public void withdraw(double amount) {
+		if(balance >= amount) {
+			balance-=amount;
+		}
+		else if(overdraft >= amount - balance) {
+			overdraft -=amount - balance;
+			balance =0;
+		}
+	}
+}
+class bank2{
+	public static void main(String[] args) {
+		BankAccount[] accounts = new BankAccount[2];
+		accounts[0] = new SavingsAccount("123", "John", 1000, 0.1);
+		accounts[1] = new CurrentAccount("456", "Mary",1000,1000);
+		for(int i =  0; i<accounts.length; i++) {
+			accounts[i].withdraw(1000);
+			accounts[i].calculateInterest();
+			accounts[i].display();
+		}
+	}
+}
