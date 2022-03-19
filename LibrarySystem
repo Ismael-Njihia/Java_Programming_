@@ -1,0 +1,50 @@
+import java.util.Scanner;
+public class Library {
+	//: Using arrays of objects, Write a java program that can be used by the university Library to do the following
+	//!.Allow the book's code and name to be entered and stored for all the books in the library
+	//2.Allow the librarian to display on te screen all the book codes and names in the library
+	
+	class Book{
+		private String code;
+		private String name;
+		
+		Book(String code, String name){
+			this.code = code;
+			this.name = name;
+		}
+		public String getCode() {
+			return code;
+		}
+		public String getName() {
+			return name;
+			
+		}
+		
+		}
+		private void start() {
+			Scanner sc = new Scanner(System.in);
+			System.out.println("Enter the number of books: ");
+			int n = sc.nextInt();
+			Book[] books = new Book[n];
+			
+			for(int i = 0; i < n; i++ ) {
+				int x = i+1;
+				System.out.println("Enter the code of the book " + x);
+				String code = sc.next();
+				System.out.println("Enter the name of the book "+ x);
+				String name = sc.next();
+				Book book = new Book(code, name);
+				books[i] = book;
+			}
+			for (int i = 0; i < n; i++) {
+				System.out.println("Book code: "+ books[i].getCode() +  " Book Name: " + books[i].getName());
+			}
+		}
+	
+	public static void main(String[] args) {
+		Library lib = new Library();
+		lib.start();
+	}
+}
+
+
