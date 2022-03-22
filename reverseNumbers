@@ -1,0 +1,26 @@
+import java.util.Scanner;
+public class ReverseNumbers {
+
+	public static void main(String[] args) {
+	Scanner reader = new Scanner(System.in);
+    
+	int numbers[] = new int [5], sum = 0;
+	System.out.println("The size of the array is: "+ numbers.length);
+	System.out.println("Enter the array elements");
+	for (int index = 0; index<numbers.length; index++) {
+		System.out.println("Number "+ (index+1) + ":");
+		numbers[index] = reader.nextInt();
+		
+	}
+	System.out.println("Numbers in reverse");
+	 for (int index = 0; index<numbers.length; index++) {
+		 System.out.println("The numbers are: \t" + numbers[index]);
+		 sum +=numbers[index];
+		 System.out.println("The sum is: "+sum);
+		 System.out.println("The average is: "+(double)(sum/numbers.length));
+	 }
+	 System.out.println();
+
+	}
+
+}
